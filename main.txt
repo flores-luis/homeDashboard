@@ -1,1 +1,5 @@
+Home Dashboard Project
 
+- To display useful day-to-day information
+- Automate personal life
+- Reminders & Notifications
