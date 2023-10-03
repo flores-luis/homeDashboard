@@ -2,9 +2,6 @@
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
-.date {
-    height: 200px;
-}
 
 .styled {
     color: teal;
@@ -14,4 +11,16 @@
     width: 50%;
     height: 400px;
     margin: 5px;
+}
+
+.left-column {
+    width: 50%;
+}
+
+.week,.month {
+    font-size: 25px;
+}
+
+.day {
+    font-size: 60px
 }
