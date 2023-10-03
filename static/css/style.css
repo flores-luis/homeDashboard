@@ -2,25 +2,21 @@
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
 
-.styled {
-    color: teal;
-    border-radius: 25px;
-    border: 2px solid teal;
-    padding: 20px;
-    width: 50%;
-    height: 400px;
-    margin: 5px;
+.row {
+    width: 100%;
 }
 
-.left-column {
-    width: 50%;
-}
 
 .week,.month {
-    font-size: 25px;
+    font-size: 150px;
 }
 
 .day {
-    font-size: 60px
+    font-size: 300px
 }
