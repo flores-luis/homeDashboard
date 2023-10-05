@@ -1,9 +1,11 @@
-from datetime import datetime 
-import re
-import requests
+from datetime import datetime
+
+import requests,api.bibleAPI as bib
 from flask import Flask, render_template
 
-app = Flask(__name__)
+# Directs Flask to find Static files
+app = Flask(__name__, static_url_path='/static', static_folder='static')
+
 dt = datetime.now()
 currentTime = dt.strftime('%I:%M %p')
 currentDayOfWeek,currentMonth,currentDay = dt.strftime('%A'),dt.strftime('%B'),dt.strftime('%d')
@@ -14,7 +16,12 @@ jsondata = requests.get(url=apicall)
 
 @app.route("/")
 def index():
-    return render_template("index.html", currentDayOfWeek=currentDayOfWeek,currentDay=currentDay,currentMonth=currentMonth,currentTime=currentTime)
+    return render_template("index.html", 
+                           currentDayOfWeek=currentDayOfWeek,
+                           currentDay=currentDay,
+                           currentMonth=currentMonth,
+                           currentTime=currentTime,
+                           verse = bib.getVerse())
 
 if __name__ == '__main__':
-    app.run(host='127.0.0.1', port=5000, debug=False)
+    app.run(host='127.0.0.1', debug=True)

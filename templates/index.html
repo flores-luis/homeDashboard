@@ -8,28 +8,27 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- <meta http-equiv="refresh" content="10"> -->
         <!-- For Testing in live port use link reference for css file need to include previous /folder...-->
-        <!-- <link rel="stylesheet" type="text/css" href="/homeDashboard/static/css/style.css"> -->
+        <link rel="stylesheet" type="text/css" href="static/css/style.css">
         <!-- For Live Flask App use link reference with static path-->
-        <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/style.css') }}?v=1">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/style.css') }}">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     </head>
     <body>
-        <div class="row">
-            <div class="col-md-3 left-column py-3 bg-dark text-light">
-                <h2 id="current-time" class="text-center text-secondary">{{ currentTime }}</h2>
-                <br>
-                <div class="text-center week">{{ currentDayOfWeek }}</div>
-                <br>
-                <div class="text-center month">{{ currentMonth }}</div>
-                <br><br>
-                <div class="text-center day">{{ currentDay }}</div>
+        <div class="row p-1 m-auto">
+            <div class="col-lg-3 py-3 bg-dark text-light rounded">
+                <h1 id="current-time" class="text-center text-secondary">{{ currentTime }}</h1>
+                <div class="text-center week py-1">{{ currentDayOfWeek }}</div>
+                <div class="text-center month py-1">{{ currentMonth }}</div>
+                <div class="text-center day py-1">{{ currentDay }}</div>
             </div>
-            <div class="col-md-9 right-column py-3">
-                <h1>Hola Familia Flores Leon</h1>
-                <h2>Bible Scripture of the Day</h2>
-                <div class="row"><h2>Weather Today</h2></div>
-                <div class="row"><h2>Weather the Next 6hrs+</h2></div>
-                <div class="row"><h2>Weather Next 7 Days</h2></div>
+            <div class="col-lg-9 py-3 rounded">
+                <h1 class="px-3">Hola Familia Flores Leon</h1>
+                <div class="col px-3">Bible Verse of the Day
+                    <p>{{ verse }}</p>
+                </div>
+                <div class="row px-3"><h2>Weather Today</h2></div>
+                <div class="row px-3"><h2>Weather the Next 6hrs+</h2></div>
+                <div class="row px-3"><h2>Weather Next 7 Days</h2></div>
             </div>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
