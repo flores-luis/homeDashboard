@@ -1,13 +1,27 @@
-from traceback import print_tb
-
 
 def getVerse():
 
     #import pprint
 
-    import requests
+    import requests,random
     from bs4 import BeautifulSoup
-
+    
+    dailyVerseList = ['JER.29.11',
+                  'ROM.12.2',
+                  'PHP.4.6',
+                  'PHP.4.13',
+                  'MAT.6.33',
+                  'MAT.11.28',
+                  'ISA.54.17',
+                  'DEU.31.6',
+                  '2CO.5.7',
+                  'JOS.1.9',
+                  'ISA.41.10',
+                  'MRK.10.27',
+                  'PRO.3.5']
+    
+    randomDailyVerse = random.choice(dailyVerseList)
+    
     #import json
     #from html2json import collect
     #Get All Books with their Id
@@ -17,13 +31,13 @@ def getVerse():
     # Get All verses in Chapter
     #url = "https://api.scripture.api.bible/v1/bibles/06125adad2d5898a-01/chapters/PRO.5/verses"
     # Get All verses in Chapter
-    url = "https://api.scripture.api.bible/v1/bibles/06125adad2d5898a-01/verses/PRO.5.1"
+    url = f"https://api.scripture.api.bible/v1/bibles/06125adad2d5898a-01/verses/{randomDailyVerse}"
 
     # Define any additional headers you might need (optional)
     headers = {
         "api-key": "49f329b4538a0d4405bbe12eb94cbd6d"  # Add your API key if required
     }
-
+    
     try:
         # Send an HTTP GET request to the specified URL with optional headers
         response = requests.get(url, headers=headers)
@@ -71,5 +85,3 @@ def getVerse():
     except requests.exceptions.RequestException as e:
         # Handle any exceptions that may occur during the request (e.g., network issues)
         print(f"An error occurred: {e}")
-
-print(getVerse())

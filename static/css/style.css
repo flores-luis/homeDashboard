@@ -1,6 +1,5 @@
 * {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    color: white;
 }
 
 body {
@@ -20,6 +19,10 @@ body {
 .day {
     font-size: 150px;
 }
+
+ .dailyVerse {
+     font-size: 50px;
+ }
 
 /* @media only screen and (max-width: 900px) {
     .week,.month {
