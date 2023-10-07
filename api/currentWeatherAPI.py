@@ -1,18 +1,20 @@
 #Current Weather API
 #Using coordinates from Geocode API
 
+import weatherGeocode
+
+
 def getCurrentWeather():
 
     import pprint
 
     import requests
-    from geoCodeAPI import getWeatherGeoCode
 
     #API KEY
     APIkey = '3e5358db3b3ab858d99d68405fe62b0b'
     
     #Coordinates
-    lat,lon = getWeatherGeoCode()
+    lat,lon = weatherGeocode.getWeatherGeoCode()
     # print(lat)
     # print(lon)
     # BASE URL with API KEY
@@ -32,7 +34,16 @@ def getCurrentWeather():
             #Convert response to JSON Object for manipulation
             jsonResponse = response.json()
             
-            pprint.pprint(jsonResponse,indent=4)
+            #Retrives desired weather data; temperature, city, weather description, 
+            temp = jsonResponse['main']['temp']
+            city = jsonResponse['name']
+            description = jsonResponse['weather'][0]['description'].title() #The title() method capitalizes the first letter of each word in the string while converting the rest of the characters to lowercase.
+            icon = jsonResponse['weather'][0]['icon']
+            
+            #Retrieve Icon URL by using image path instead of API
+            iconURL = f'https://openweathermap.org/img/wn/{icon}@2x.png'
+            
+            return temp, city, description, iconURL
                         
         else:
             # If the request was not successful, print an error message with the status code
@@ -42,4 +53,4 @@ def getCurrentWeather():
         # Handle any exceptions that may occur during the request (e.g., network issues)
         print(f"An error occurred: {e}")
         
-print(getCurrentWeather())
+# print(getCurrentWeather())

@@ -27,9 +27,15 @@
                     <p class="'dailyVerse">{{ chapter }}</p>
                     <p class="'dailyVerse">{{ verse }}</p>
                 </div>
-                <div class="row px-3"><h2>Weather Today</h2></div>
-                <div class="row px-3"><h2>Weather the Next 6hrs+</h2></div>
-                <div class="row px-3"><h2>Weather Next 7 Days</h2></div>
+                <div class="row px-3">
+                    Weather Today
+                    <p>{{temperature}}</p>
+                    <p>{{weatheDescription}}</p>
+                    <p>{{city}}</p>
+                    <img class="text-center" src="{{ imagePath }}" alt="Weather Image from Weather API">
+                </div>
+                <div class="row px-3"><h2>Weather the Next 6hrs Coming Soon..</h2></div>
+                <div class="row px-3"><h2>Weather Next 7 Days Coming Soon..</h2></div>
             </div>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
