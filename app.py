@@ -24,7 +24,6 @@ def index():
                            currentDayOfWeek=currentDayOfWeek,
                            currentDay=currentDay,
                            currentMonth=currentMonth,
-                           currentTime=currentTime,
                            chapter=chapter,
                            verse=verse,
                            temperature = round(temp),
