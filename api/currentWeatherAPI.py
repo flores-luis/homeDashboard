@@ -1,22 +1,14 @@
 #Current Weather API
 #Using coordinates from Geocode API
 
-import weatherGeocode
+def getCurrentWeather(lat,lon):
 
-
-def getCurrentWeather():
-
-    import pprint
-
+    #import pprint
     import requests
 
     #API KEY
     APIkey = '3e5358db3b3ab858d99d68405fe62b0b'
-    
-    #Coordinates
-    lat,lon = weatherGeocode.getWeatherGeoCode()
-    # print(lat)
-    # print(lon)
+
     # BASE URL with API KEY
     #apicall = 'http://api.openweathermap.org/data/2.5/forecast?id=524901&appid={APIkey}'
     
@@ -53,4 +45,4 @@ def getCurrentWeather():
         # Handle any exceptions that may occur during the request (e.g., network issues)
         print(f"An error occurred: {e}")
         
-# print(getCurrentWeather())
+#print(getCurrentWeather())

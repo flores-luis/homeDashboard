@@ -2,32 +2,33 @@ from datetime import datetime
 from tabnanny import verbose
 
 import api.bibleAPI as bib
-import api.currentWeatherAPI as weather
 import requests
+from api.currentWeatherAPI import getCurrentWeather
+from api.weatherGeocode import getWeatherGeoCode
 from flask import Flask, render_template
 
 # Directs Flask to find Static files
 app = Flask(__name__, static_url_path='/static', static_folder='static')
 
 dt = datetime.now()
-currentTime = dt.strftime('%I:%M %p')
+# currentTime = dt.strftime('%I:%M %p')
 currentDayOfWeek,currentMonth,currentDay = dt.strftime('%A'),dt.strftime('%B'),dt.strftime('%d')
 
 
 @app.route("/")
 def index():
     chapter,verse = bib.getVerse()
-    temp, city, description, iconURL = weather.getCurrentWeather()
+    lat,lon = getWeatherGeoCode()
+    temp, city, description, iconURL = getCurrentWeather(lat,lon)
     return render_template("index.html", 
                            currentDayOfWeek=currentDayOfWeek,
                            currentDay=currentDay,
                            currentMonth=currentMonth,
-                           currentTime=currentTime,
                            chapter=chapter,
                            verse=verse,
-                           temperature = temp,
+                           temperature = round(temp),
                            city = city,
-                           weatherDescription = description,
+                           description = description,
                            imagePath = iconURL)
 
 if __name__ == '__main__':
