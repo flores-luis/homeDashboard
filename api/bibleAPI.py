@@ -3,7 +3,9 @@ def getVerse():
 
     #import pprint
 
-    import requests,random
+    import random
+
+    import requests
     from bs4 import BeautifulSoup
     
     dailyVerseList = ['JER.29.11',
