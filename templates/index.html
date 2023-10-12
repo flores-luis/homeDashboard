@@ -16,11 +16,10 @@
     <body>
         <div class="row p-1 m-auto">
             <div class="col-md-3 py-3 bg-dark bg-opacity-30 text-light rounded">
-                <h1 id="js-time" class="text-center text-warning" style="font-size: 5rem"></h1>
-                <h1 id="js-date" class="text-center text-warning" style="font-size: 3rem"></h1>
-                <div class="text-center" style="font-size: 30px">{{ currentDayOfWeek }}</div>
-                <div class="text-center" style="font-size: 80px">{{ currentMonth }}</div>
-                <div class="text-center" style="font-size: 280px">{{ currentDay }}</div>
+                <h1 id="js-time" class="text-center text-warning" style="font-size: 4rem"></h1>
+                <h1 id="js-dayname" class="text-center text-warning" style="font-size: 3rem"></h1>
+                <h1 id="js-month" class="text-center text-warning" style="font-size: 3rem"></h1>
+                <h1 id="js-day" class="text-center text-warning" style="font-size: 10rem"></h1>
             </div>
             <div class="col-md-9 py-3 rounded">
                 <h1 class="px-3">Hola Familia Flores Leon</h1>
@@ -36,6 +35,9 @@
                             <p class="card-text text-center" style="font-size: 45px;">{{temperature}}°F</p>
                           <p class="card-text text-center">{{description}}</p>
                         </div>
+                    </div>
+                    <div class="card">
+                        
                     </div>
                     <div class="rounded" style="width: 75%;">
                         <img src="https://media.tenor.com/QaQiLi04QQQAAAAd/bluey-bingo.gif" class="card-img-top rounded" alt="Weather Image from Weather API">
@@ -53,10 +55,10 @@
         </div>
         <script src="{{ url_for('static', filename='js/liveTime.js') }}"></script>
         <!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/hdNZ0yIkxu4?si=_A6AObgAK4Zc7Jrd&amp;start=1?rel=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> -->
-        <!-- <audio id="myAudio" controls muted>
+        <!-- <audio id="myAudio" controls>
             <source src="{{ url_for('static', filename='sound/bluey_theme_full.mp3') }}" type="audio/mpeg">
-        </audio>
-        <script src="{{ url_for('static', filename='js/audio.js') }}"></script>         -->
+        </audio> -->
+        <!-- <script src="{{ url_for('static', filename='js/audio.js') }}"></script>         -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
         <!--
         <script src="{{ url_for('static', filename='js/refresh.js') }}"></scrip>
