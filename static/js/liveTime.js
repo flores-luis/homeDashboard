@@ -33,11 +33,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
         // update variable values to innetHTML text
         time.innerHTML = currentDate.toLocaleTimeString([],timeOptions);
-        day.innerHTML = currentDate.getDay()
+        day.innerHTML = currentDate.getUTCDate()
         dayname.innerHTML = dayNames[currentDate.getDay()]
         month.innerHTML = monthNames[currentDate.getMonth()]
-
-    
     // Setting milliseconds 1000x per second as refresh time
     },1000)
 
