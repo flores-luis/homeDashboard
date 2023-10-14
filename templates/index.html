@@ -12,24 +12,28 @@
         <!-- For Live Flask App use link reference with static path-->
         <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/style.css') }}">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+        <!-- Importing BootStrap Icons stylesheet -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     </head>
     <body>
         <div class="row p-1 m-auto">
             <div class="col-md-3 py-3 bg-dark bg-opacity-30 text-light rounded">
-                <h1 id="js-time" class="text-center text-warning" style="font-size: 5rem"></h1>
-                <h1 id="js-date" class="text-center text-warning" style="font-size: 3rem"></h1>
-                <div class="text-center" style="font-size: 30px">{{ currentDayOfWeek }}</div>
-                <div class="text-center" style="font-size: 80px">{{ currentMonth }}</div>
-                <div class="text-center" style="font-size: 280px">{{ currentDay }}</div>
+                <h1 id="js-time" class="text-center text-warning" style="font-size: 4rem"></h1>
+                <h1 id="js-dayname" class="text-center text-warning" style="font-size: 3rem"></h1>
+                <h1 id="js-month" class="text-center text-warning" style="font-size: 3rem"></h1>
+                <h1 id="js-day" class="text-center text-warning" style="font-size: 10rem"></h1>
+                <div class="rounded text-center">
+                    <img src="https://media.tenor.com/QaQiLi04QQQAAAAd/bluey-bingo.gif" class="rounded text-center" style="width: 100%;" alt="Bluey Gif">
+                </div>
             </div>
             <div class="col-md-9 py-3 rounded">
-                <h1 class="px-3">Hola Familia Flores Leon</h1>
-                <div class="container px-3 text-center" style="font-size: 20px;">Bible Verse of the Day
-                    <p class="d-flex" style="font-size: 18px;">{{ chapter }}</p>
+                <h1 class="px-3 text-center">Hola Familia Flores Leon</h1>
+                <div class="px-3 text-center">
                     <p class="container" style="font-size: 25px;">{{ verse }}</p>
+                    <p class="d-flex justify-content-end" style="font-size: 18px;">{{ chapter }}</p>
                 </div>
                 <div class="bottom d-flex justify-content-evenly">
-                    <div class="card py-3" style="width: 15rem;">
+                    <div class="card py-3" style="width: 20rem;">
                         <h5 class="card-title text-center">City of {{city}}</h5>
                         <img src="{{ imagePath }}" class="card-img-top" alt="Weather Image from Weather API">
                         <div class="card-body">
@@ -37,8 +41,13 @@
                           <p class="card-text text-center">{{description}}</p>
                         </div>
                     </div>
-                    <div class="rounded" style="width: 75%;">
-                        <img src="https://media.tenor.com/QaQiLi04QQQAAAAd/bluey-bingo.gif" class="card-img-top rounded" alt="Weather Image from Weather API">
+                    <div class="card py-3" style="width: 20rem;">
+                        <h5 class="card-title text-center">Today's Tasks</h5>
+                        <div class="input-group p-2">
+                            <input id="input-bar" type="text" class="form-control" placeholder="Create New Task" aria-label="New Task Bar" aria-describedby="button-addon2" maxlength="20">
+                            <button onclick="addTask()" class="btn btn-outline-warning" type="button" id="button-addon2">Button</button>
+                          </div>
+                        <div id="input-list" class="container"></div>
                     </div>
                     <!-- <div class="card py-3" style="width: 15rem;">
                         <h5 class="card-title text-center">City of {{city}}</h5>
@@ -52,11 +61,12 @@
             </div>
         </div>
         <script src="{{ url_for('static', filename='js/liveTime.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/todo.js') }}"></script>
         <!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/hdNZ0yIkxu4?si=_A6AObgAK4Zc7Jrd&amp;start=1?rel=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> -->
-        <!-- <audio id="myAudio" controls muted>
+        <!-- <audio id="myAudio" controls>
             <source src="{{ url_for('static', filename='sound/bluey_theme_full.mp3') }}" type="audio/mpeg">
-        </audio>
-        <script src="{{ url_for('static', filename='js/audio.js') }}"></script>         -->
+        </audio> -->
+        <!-- <script src="{{ url_for('static', filename='js/audio.js') }}"></script>         -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
         <!--
         <script src="{{ url_for('static', filename='js/refresh.js') }}"></scrip>

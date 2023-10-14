@@ -52,33 +52,31 @@ def getVerse():
             jsonResponse = response.json()
             
             #print(jsonResponse)
-            chapterVerseObject = jsonResponse['data']['reference']
+            chapter = jsonResponse['data']['reference']
             verseHtmlObject = jsonResponse['data']['content']
             
-            #print(htmlObjectForVerse)
             # Parse the HTML using BeautifulSoup
             soup = BeautifulSoup(verseHtmlObject, 'html.parser')
 
             # Find all <p> tags and extract their text
-            p_tags = soup.find_all('p')
+            p_tag = soup.find('p',class_='p')
 
-            #print(p_tags)
-            
-            sentences = []
-            
             # Extract and print the modified text from each <p> tag
-            for p_tag in p_tags:
-                sentence_parts = p_tag.get_text().split(';')
-                for part in sentence_parts:
-                    text = ''.join(char for char in part if not char.isdigit())
-                    cleaned_text = text.strip()
-                    if cleaned_text:  # Check if the sentence is not empty
-                        sentences.append(cleaned_text)
-                        
-            # Use the join() method to combine the sentences into a single string with newline separators
-            combined_text = ",\n".join(sentences)
+            text = p_tag.get_text()
             
-            return chapterVerseObject,combined_text
+            # Find the index of the first non-numeric character
+            index = next((i for i, c in enumerate(text) if not c.isdigit()), None)
+
+            # Remove the leading numbers if they exist
+            if index is not None:
+                text = text[index:]
+            else:
+                text = text  # No leading numbers found
+
+            # Print the modified string
+            #print(text)
+            
+            return chapter,text
                         
         else:
             # If the request was not successful, print an error message with the status code
@@ -87,3 +85,5 @@ def getVerse():
     except requests.exceptions.RequestException as e:
         # Handle any exceptions that may occur during the request (e.g., network issues)
         print(f"An error occurred: {e}")
+       
+getVerse()

@@ -3,6 +3,7 @@ from tabnanny import verbose
 
 import api.bibleAPI as bib
 import requests
+from api.bibleAPI import getVerse
 from api.currentWeatherAPI import getCurrentWeather
 from api.weatherGeocode import getWeatherGeoCode
 from flask import Flask, render_template
@@ -10,9 +11,9 @@ from flask import Flask, render_template
 # Directs Flask to find Static files
 app = Flask(__name__, static_url_path='/static', static_folder='static')
 
-dt = datetime.now()
+#dt = datetime.now()
 # currentTime = dt.strftime('%I:%M %p')
-currentDayOfWeek,currentMonth,currentDay = dt.strftime('%A'),dt.strftime('%B'),dt.strftime('%d')
+#currentDayOfWeek,currentMonth,currentDay = dt.strftime('%A'),dt.strftime('%B'),dt.strftime('%d')
 
 
 @app.route("/")
@@ -21,9 +22,6 @@ def index():
     lat,lon = getWeatherGeoCode()
     temp, city, description, iconURL = getCurrentWeather(lat,lon)
     return render_template("index.html", 
-                           currentDayOfWeek=currentDayOfWeek,
-                           currentDay=currentDay,
-                           currentMonth=currentMonth,
                            chapter=chapter,
                            verse=verse,
                            temperature = round(temp),
