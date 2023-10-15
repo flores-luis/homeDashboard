@@ -22,7 +22,7 @@ def getCurrentWeather(lat,lon):
         # Check the response status code to see if the request was successful (HTTP 200 OK)
         if response.status_code == 200:
             # If the request was successful, print the response content (JSON data)
-            print("Response Content for current Weather API:")
+            #print("Response Content for current Weather API:")
             #Convert response to JSON Object for manipulation
             jsonResponse = response.json()
             

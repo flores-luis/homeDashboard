@@ -2,27 +2,25 @@
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
-body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-  }
+div.row {
+    color: rgb(7, 120, 90);
+    background-color: rgb(128, 219, 157);
+}
 
 #input-list > div {
     display: flex;
     justify-content: space-between;
-    color: rgb(168, 109, 0);
+    color: rgb(7, 120, 90);
     font-size: 15px;
     list-style: none;
     cursor: pointer;
 }
 
 i.bi-check-circle,i.bi-circle,i.bi-trash3-fill {
-    color: rgb(168, 109, 0);
+    color: rgb(7, 120, 90);
     font-size: 20px;
     cursor: pointer;
 }
-
 
 /* @media only screen and (max-width: 900px) {
     .week,.month {
