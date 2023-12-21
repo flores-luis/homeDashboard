@@ -7,7 +7,7 @@ def getVerse():
 
     import requests
     from bs4 import BeautifulSoup
-    
+
     dailyVerseList = ['JER.29.11',
                   'ROM.12.2',
                   'PHP.4.6',
@@ -21,9 +21,9 @@ def getVerse():
                   'ISA.41.10',
                   'MRK.10.27',
                   'PRO.3.5']
-    
+
     randomDailyVerse = random.choice(dailyVerseList)
-    
+
     #import json
     #from html2json import collect
     #Get All Books with their Id
@@ -39,7 +39,7 @@ def getVerse():
     headers = {
         "api-key": "49f329b4538a0d4405bbe12eb94cbd6d"  # Add your API key if required
     }
-    
+
     try:
         # Send an HTTP GET request to the specified URL with optional headers
         response = requests.get(url, headers=headers)
@@ -50,11 +50,11 @@ def getVerse():
             print("Response Content:")
             #Convert response to JSON Object for manipulation
             jsonResponse = response.json()
-            
+
             #print(jsonResponse)
             chapter = jsonResponse['data']['reference']
             verseHtmlObject = jsonResponse['data']['content']
-            
+
             # Parse the HTML using BeautifulSoup
             soup = BeautifulSoup(verseHtmlObject, 'html.parser')
 
@@ -63,21 +63,21 @@ def getVerse():
 
             # Extract and print the modified text from each <p> tag
             text = p_tag.get_text()
-            
-            # Find the index of the first non-numeric character
-            index = next((i for i, c in enumerate(text) if not c.isdigit()), None)
 
-            # Remove the leading numbers if they exist
-            if index is not None:
-                text = text[index:]
-            else:
-                text = text  # No leading numbers found
+            # Find the index of the first non-numeric character
+            # index = next((i for i, c in enumerate(text) if not c.isdigit()), None)
+
+            # # Remove the leading numbers if they exist
+            # if index is not None:
+            #     text = text[index:]
+            # else:
+            #     text = text  # No leading numbers found
 
             # Print the modified string
             #print(text)
-            
+            print(text,chapter)
             return chapter,text
-                        
+
         else:
             # If the request was not successful, print an error message with the status code
             print(f"Request failed with status code: {response.status_code}")
@@ -85,5 +85,4 @@ def getVerse():
     except requests.exceptions.RequestException as e:
         # Handle any exceptions that may occur during the request (e.g., network issues)
         print(f"An error occurred: {e}")
-       
-getVerse()
+
